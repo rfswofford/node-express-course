@@ -1,15 +1,18 @@
 const jwt = require('jsonwebtoken')
+const CustomAPIError = require ('../errors/custom-error')
 
 const authMiddleware = async (req, res, next)=>{
     const authHeader = req.headers.authorization; 
-
-    if(!authHeader || !authHeader.startsWith('Bearer')){
-        res.status(401).json({msg:'unauthorized'})
-        }
     
+    if(!authHeader || !authHeader.startsWith('Bearer')){
+        throw new CustomAPIError ('no token provided')
+    }
+ 
     const token = authHeader.split(' ')[1]
 
-    console.log( token);
+    console.log(token);
+
+        
 
     try{
         const verified = jwt.verify(token, process.env.JWT_SECRET)
