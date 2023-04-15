@@ -12,4 +12,6 @@
         function to access the database you pass Process.env.MONGO_URI as the parameter. You also have to require(‘dotenv’).config (); 
         in order to make sure it connects to the dotenv npm module and runs properly. 
         2. How do you protect the contents of the .env file so that it is not stored in your github repository?
-           place .env into a .gitignore file 
+
+           place .env into a .gitignore file
+
